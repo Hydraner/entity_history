@@ -1,0 +1,4 @@
+services:
+  entity_history.repository:
+    class: Drupal\entity_history\EntityHistoryRepository
+    arguments: ['@database']

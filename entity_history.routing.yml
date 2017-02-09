@@ -1,0 +1,13 @@
+entity_history.get_last_node_view:
+  path: '/entity_history/get_node_read_timestamps'
+  defaults:
+    _controller: '\Drupal\entity_history\Controller\EntityHistoryController::getEntityReadTimestamps'
+  requirements:
+    _permission: 'access content'
+
+entity_history.read_node:
+  path: '/entity_history/read'
+  defaults:
+    _controller: '\Drupal\entity_history\Controller\EntityHistoryController::readEntity'
+  requirements:
+    _access: 'TRUE'

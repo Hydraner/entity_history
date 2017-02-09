@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Containing legacy history api functions.
+ */
+
+/**
+ * Retrieves the timestamp for the current user's last view of a specified node.
+ *
+ * @param int $nid
+ *   A node ID.
+ *
+ * @return int
+ *   If a node has been previously viewed by the user, the timestamp in seconds
+ *   of when the last view occurred; otherwise, zero.
+ *
+ * @deprecated Use \Drupal\entity_history\EntityHistoryRepositoryInterface::getLastViewed() instead.
+ * @todo: Check if we can delete this.
+ */
+function history_read($nid) {
+  $account = \Drupal::currentUser();
+  $history = \Drupal::service('entity_history.repository')->getLastViewed('node', array($nid), $account);
+  return $history[$nid];
+}
+
+/**
+ * Retrieves the last viewed timestamp for each of the passed node IDs.
+ *
+ * @param array $nids
+ *   An array of node IDs.
+ *
+ * @return array
+ *   Array of timestamps keyed by node ID. If a node has been previously viewed
+ *   by the user, the timestamp in seconds of when the last view occurred;
+ *   otherwise, zero.
+ *
+ * @deprecated Use \Drupal\entity_history\EntityHistoryRepositoryInterface::getLastViewed() instead.
+ * @todo: Check if we can delete this.
+ */
+function history_read_multiple($nids) {
+  $account = \Drupal::currentUser();
+  return \Drupal::service('entity_history.repository')->getLastViewed('node', $nids, $account);
+}
+
+/**
+ * Updates 'last viewed' timestamp of the specified entity for the current user.
+ *
+ * @param int $nid
+ *   The node ID that has been read.
+ * @param \Drupal\Core\Session\AccountInterface $account
+ *   (optional) The user account to update the history for. Defaults to the
+ *   current user.
+ *
+ * @deprecated Use \Drupal\entity_history\EntityHistoryRepositoryInterface::updateLastViewed() instead.
+ * @todo: Check if we can delete this.
+ */
+function history_write($nid, $account = NULL) {
+  if (!isset($account)) {
+    $account = \Drupal::currentUser();
+  }
+  $node = entity_load('node', $nid);
+  \Drupal::service('entity_history.repository')->updateLastViewed($node, $account);
+}

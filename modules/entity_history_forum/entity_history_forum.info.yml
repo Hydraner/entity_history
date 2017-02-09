@@ -1,0 +1,9 @@
+name: Entity history forum
+type: module
+description: 'Integrates entity history with the forum module. This will be a dependency when using the core forum module.'
+package: Core
+version: VERSION
+core: 8.x
+dependencies:
+  - entity_history
+  - forum

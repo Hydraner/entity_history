@@ -1,0 +1,6 @@
+services:
+  entity_history_forum_manager:
+    class: Drupal\entity_history_forum\EntityHistoryForumManager
+    arguments: ['@config.factory', '@entity.manager', '@database', '@string_translation', '@comment.manager', '@entity_type.manager']
+    tags:
+      - { name: backend_overridable }

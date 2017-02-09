@@ -1,0 +1,6 @@
+name: Entity History
+type: module
+description: 'Replacement for the history module, providing history functionality for every entity type.'
+package: Core
+version: VERSION
+core: 8.x

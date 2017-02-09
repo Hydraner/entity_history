@@ -1,0 +1,27 @@
+api:
+  version: VERSION
+  js:
+    js/entity-history.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
+    - core/drupal
+    - core/drupal.ajax
+
+mark-as-read:
+  version: VERSION
+  js:
+    js/mark-as-read.js: {}
+  dependencies:
+    - entity_history/api
+
+comment-new-indicator:
+  version: VERSION
+  js:
+    js/comment-new-indicator.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupal
+    - entity_history/api
+    - core/drupal.displace

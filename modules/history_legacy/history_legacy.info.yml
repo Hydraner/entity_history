@@ -1,0 +1,8 @@
+name: History legacy
+type: module
+description: 'Legacy module, to make the entity history module compatible with modules, already implementing cores history api.'
+package: Core
+version: VERSION
+core: 8.x
+dependencies:
+  - entity_history

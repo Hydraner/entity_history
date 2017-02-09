@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * Installation functions for Entity-History module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function entity_history_schema() {
+  $schema['entity_history'] = [
+    'description' => 'A record of which {users} have read which entities.',
+    'fields' => [
+      'uid' => [
+        'description' => 'The {users}.uid that read the {entity_history}.entity_id entity.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'entity_type' => [
+        'description' => 'The type of the entity that was read.',
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'default' => '',
+        'length' => 255,
+      ],
+      'entity_id' => [
+        'description' => 'The ID of the entity that was read.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'timestamp' => array(
+        'description' => 'The Unix timestamp at which the read occurred.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ],
+    'primary key' => [
+      ['entity_type', 32],
+      'uid',
+      'entity_id',
+    ],
+    'indexes' => [
+      'entity_history_entity' => [
+        ['entity_type', 32],
+        'entity_id',
+      ],
+    ],
+  ];
+
+  return $schema;
+}
