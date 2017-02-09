@@ -1,0 +1,14 @@
+{
+  "name": "drupal/entity_history",
+  "type": "drupal-module",
+  "description": "Replacement for the history module in drupal 8, providing history functionality for every entity type.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/entity_history",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/entity_history",
+    "source": "http://cgit.drupalcode.org/entity_history"
+  },
+  "require": { }
+}
